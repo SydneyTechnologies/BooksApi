@@ -16,3 +16,7 @@ class EditBookApiView(RetrieveUpdateAPIView):
 class ListBookApiView(ListAPIView):
     queryset =  Book.objects.all()
     serializer_class = BookSerializer
+
+class DeleteBookApiView(DestroyAPIView):
+    queryset =  Book.objects.all()
+    serializer_class = BookSerializer
