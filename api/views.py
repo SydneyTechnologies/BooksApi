@@ -7,8 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from knox.models import AuthToken
 from django.contrib.auth import authenticate
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 # Create your views here.
 class CreateBookApiView(CreateAPIView):
     # queryset is set to Book so drf knows what model to create with this endpoint
@@ -38,6 +37,7 @@ class LoginView(APIView):
     # this view will allow us to get our token in one of the following ways
     # through sending our login detail using a username and password (like signing in) 
     serializer_class = UserSerializer
+    permission_classes = [AllowAny]
     def post(self, request):
         username = request.data["username"]
         password = request.data["password"]
